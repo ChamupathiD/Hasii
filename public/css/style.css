@@ -1,131 +1,144 @@
+:root {
+  --bg1: #ffd6e7;
+  --bg2: #ffeef6;
+  --card: #ffffffcc;
+  --yes: #ff3b7a;
+  --yesHover: #ff1f68;
+  --no: #e5e7eb;
+  --text: #111827;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    background-color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    flex-direction: row;
-    align-items: end;
-    flex-wrap: wrap;
-}
-
-#no-button {
-    margin: 0 10px;
-    color: white;
-    background-color: red;
-    height: 40px !important;
-    width: auto;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-
-    p {
-        margin: 0;
-        object-fit: contain;
-    }
-}
-
-#yes-button {
-    margin: 0 10px;
-    color: white;
-    border: none;
-    background-color: green;
-    cursor: pointer;
-    height: 40px;
-
-    p {
-        margin: 0;
-        object-fit: contain;
-    }
-}
-
-/* Make responsive for mobile */
-@media (max-width: 768px) {
-    body {
-        padding: 0 20px;
-    }
+  margin: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  padding: 16px;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-.message {
-    display: none;
+  width: min(720px, 92vw);
+  padding: 26px 22px;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.15);
 }
 
 .banner-gif {
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
+  width: 100%;
+  margin: 0 auto 10px;
+}
 
-    img {
-        width: auto;
-        height: 250px;
-    }
+.banner-gif img {
+  width: auto;
+  height: 250px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.12));
+}
+
+#question-heading {
+  font-size: clamp(26px, 4vw, 44px);
+  margin: 12px 0 18px;
+  color: var(--text);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.buttons button {
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s ease, background 0.12s ease, filter 0.12s ease;
+}
+
+.buttons button p {
+  margin: 0;
+}
+
+#yes-button {
+  background: var(--yes);
+  color: #fff;
+}
+
+#yes-button:hover {
+  background: var(--yesHover);
+}
+
+#no-button {
+  background: var(--no);
+  color: var(--text);
+}
+
+#no-button:hover {
+  filter: brightness(0.98);
+}
+
+/* Message block is controlled by JS */
+.message {
+  display: none;
+  margin-top: 18px;
 }
 
 .language-selector {
-    margin-top: 30px;
-    position: unset;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--text);
 }
 
 .language-selector label {
-    margin-right: 10px;
+  font-weight: 600;
 }
 
 .language-selector select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(17, 24, 39, 0.18);
+  border-radius: 12px;
+  background: #ffffffc7;
+  font-size: 16px;
 }
 
 .creator {
-    text-decoration: none;
-    color: #333;
-}
-
-.creator:visited {
-    text-decoration: none;
-    color: #333;
+  text-decoration: none;
+  color: rgba(17, 24, 39, 0.85);
 }
 
 .creator:hover {
-    text-decoration: underline;
-    color: #555;
+  text-decoration: underline;
 }
 
-/* CSS For Mobile */
-@media (max-width: 768px) {
-    .language-selector {
-        position: unset;
-        margin-top: 30px;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
+@media (max-width: 520px) {
+  .banner-gif img {
+    height: 210px;
+  }
+
+  .buttons button {
+    width: 100%;
+    max-width: 260px;
+  }
 }
